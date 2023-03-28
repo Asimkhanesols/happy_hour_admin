@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import '../../../core/utils/assets_constants.dart';
 import '../../../core/utils/colors.dart';
 import '../../../core/utils/styles.dart';
-import '../../widgets/responsive.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
 
             height: context.height,
             padding: const EdgeInsets.all(8),
-            color: halfGrey,
+            color: bgColor,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,8 +138,8 @@ class HomeScreen extends StatelessWidget {
 }
 Widget dashBoardContainer({String? title , String? number}){
   return Container(
-    height:  Get.height * 0.15,
-    width: Get.width * 0.15,
+    height:  Get.height * 0.13,
+    width: Get.width * 0.13,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(2),
       color: whiteColor,
@@ -149,19 +148,19 @@ Widget dashBoardContainer({String? title , String? number}){
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 2,
           blurRadius: 2,
-          offset: Offset(0, 1),
+          offset: const Offset(0, 1),
         ),
       ],
     ),
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(6.0),
       child: Column(
         children: [
           10.ph,
-          Text(title! ,textAlign: TextAlign.center, style: TextStyles.boldBodyText,),
-          20.ph,
-          Text(number! ,style: TextStyles.primaryColorText ),
-          20.ph,
+          Text(title! ,textAlign: TextAlign.center, style: TextStyles.boldBodyText?.copyWith(fontSize: 14),),
+          15.ph,
+          Text(number! ,style: TextStyles.primaryColorText?.copyWith(fontSize: 15) ),
+          15.ph,
           Text("update Today", style: TextStyles.greyMostSmallBodyText)
         ],
       ),

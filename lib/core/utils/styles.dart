@@ -20,11 +20,13 @@ class TextStyles {
       ?.copyWith(fontSize: 20, color: Colors.black.withOpacity(0.75));
   static TextStyle? get bodyText => Get.textTheme.bodyMedium
       ?.copyWith(fontSize: 16 , color: Colors.black, fontWeight: FontWeight.w400);
+  static TextStyle? get tableText => Get.textTheme.bodyMedium
+      ?.copyWith(fontSize: 12 , color: Colors.black, fontWeight: FontWeight.bold);
   static TextStyle? get bottomBlackText => bodyText?.copyWith(
         fontSize: 14,
       );
   static TextStyle? get smallBlackText => bottomBlackText?.copyWith(
-        fontSize: 13,
+        fontSize: 12,
     color: Colors.black.withOpacity(0.5)
       );
   static TextStyle? get ultraSmallBlackText => smallBlackText?.copyWith(

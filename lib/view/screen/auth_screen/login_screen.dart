@@ -1,6 +1,7 @@
 import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
 import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
+import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,9 +23,9 @@ class LoginScreen extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 12),
+              margin: const EdgeInsets.symmetric(horizontal: 12),
 
-              width: context.width * 0.3,
+              width: context.width * 0.5,
               color: bgColor,
 
               child: Padding(
@@ -33,9 +34,9 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 30,),
+                   30.ph,
                     Image.asset(imgLogo , width: 100 , height: 100,),
-                    SizedBox(height: 40,),
+                    40.ph,
                     TextFormField(
                       decoration: InputDecoration(
 
@@ -43,31 +44,32 @@ class LoginScreen extends StatelessWidget {
                           suffixIcon: Icon(Icons.email, size: 18,)
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    30.ph,
                     TextFormField(
                       decoration: InputDecoration(
 
                           hintText: 'Password' , hintStyle: TextStyles.textFieldSmallHint,
-                          suffixIcon: Icon(Icons.lock , size: 18,)
+                          suffixIcon: const Icon(Icons.lock , size: 18,)
                       ),
                     ),
-                    SizedBox(height: 20),
+                    20.ph,
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                          value: false,
-                          onChanged: (value) {},
-                        ),
-                        Text('Remember me'),
-                      ],
+                    ListTile(
+                      leading:  Checkbox(
+                        value: false,
+                        onChanged: (value) {},
+                      ),
+                      title:   const Text('Remember me'),
+
+
                     ),
-                    SizedBox(height: 20),
+
+
+                   20.ph,
                     ElevatedButtonW(buttonText: 'Log in ', onTap: (){
-                      Get.to(DashBoardScreen());
+                      Get.to(()=> const DashBoardScreen());
                     },),
-                    SizedBox(height: 20),
+                  20.ph,
 
 
 

@@ -4,7 +4,6 @@ import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_controller.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../widgets/responsive.dart';
 
 
 class DashBoardScreen extends GetView<DashBoardController> {
@@ -17,7 +16,7 @@ class DashBoardScreen extends GetView<DashBoardController> {
       backgroundColor: halfGrey,
       body: Obx(() => Row(
         children: <Widget>[
-          if(Responsive.isDesktop())
+
             Stack(
             children: [
               NavigationRail(

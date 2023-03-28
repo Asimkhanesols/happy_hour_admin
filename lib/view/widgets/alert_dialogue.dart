@@ -968,11 +968,15 @@ AlertDialog deletePackageDialogueW() {
                   borderColor: primaryColor,
                   height: 40,
                   width: 200,
+                  onTap: ()=> Get.back(),
 
 
                 ),
                 ElevatedButtonW(buttonText: 'Yes',height: 40,
-                  width: 200,)
+                  width: 200,
+                  onTap: ()=> Get.back(),
+
+                )
 
 
 
