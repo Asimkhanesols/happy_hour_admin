@@ -1,11 +1,13 @@
 
 
 import 'package:add_happy_hour_admin/core/utils/strings.dart';
+import 'package:add_happy_hour_admin/view/screen/auth_screen/login_screen.dart';
 import 'package:add_happy_hour_admin/view/screen/flag_report/flag_report_screen.dart';
 import 'package:add_happy_hour_admin/view/screen/happy_hours/happy_hours_screen.dart';
 import 'package:add_happy_hour_admin/view/screen/packages/packages_screen.dart';
  import 'package:add_happy_hour_admin/view/screen/users/users_screen.dart';
 import 'package:add_happy_hour_admin/view/screen/welcome/welcome_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -39,7 +41,7 @@ class DashBoardController extends GetxController{
   List<Widget> screens = [
     const HomeScreen(),
     const HappyHourScreen(),
-    const UsersScreen(),
+       UsersScreen(),
     const WelcomeScreen(),
     const FlagReportScreen(),
     const PackagesScreen(),
@@ -49,7 +51,7 @@ class DashBoardController extends GetxController{
   List<Widget> newScreens = [
     const HomeScreen(),
     const HappyHourScreen(),
-    const UsersScreen(),
+     UsersScreen(),
     const WelcomeScreen(),
     const FlagReportScreen(),
     const PackagesScreen(),
@@ -61,4 +63,12 @@ class DashBoardController extends GetxController{
   List totalsList = [
   totalHappyHour,totalUser ,  totalBussAccount ,totHapHourReq , totStandAcc
 ];
+
+
+
+  signOut(){
+    FirebaseAuth auth = FirebaseAuth.instance;
+    auth.signOut();
+    Get.to(()=> LoginScreen());
+  }
 }

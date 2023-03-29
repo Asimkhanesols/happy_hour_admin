@@ -1,4 +1,6 @@
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
+import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
+import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
 import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
 import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,9 @@ import 'package:get/get.dart';
 
 
 class AddNewUserScreen extends StatelessWidget {
-  const AddNewUserScreen({Key? key}) : super(key: key);
+    AddNewUserScreen({Key? key}) : super(key: key);
+
+  final UserController controller = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,10 @@ class AddNewUserScreen extends StatelessWidget {
 
 
                     10.ph,
-                    Row(
+                    Form(
+                      key: controller.formKey,
+
+                      child: Row(
                       children: [
                         Container(
                             decoration: BoxDecoration(
@@ -43,15 +50,17 @@ class AddNewUserScreen extends StatelessWidget {
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius:2,
-                                  blurRadius: 3,
-                                  offset: Offset(0, 3),
+                                  blurRadius: 2,
+                                  offset: Offset(0, 1),
                                 ),
                               ],
                             ),
-                            height: 50,
+
                             width: Get.width * 0.17,
 
                             child: TextFormField(
+                              controller: controller.nameController,
+                              validator: controller.validateName,
                               decoration: InputDecoration(
                                   hintText: 'name',hintStyle: TextStyles.textFieldSmallHint
                               ),
@@ -69,10 +78,12 @@ class AddNewUserScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            height: 50,
+
                             width: Get.width * 0.17,
 
                             child: TextFormField(
+                              controller: controller.emailController,
+                              validator: controller.validateEmail,
                               decoration: InputDecoration(
                                   hintText: 'Email',hintStyle: TextStyles.textFieldSmallHint
                               ),
@@ -90,10 +101,12 @@ class AddNewUserScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            height: 50,
+
                             width: Get.width * 0.17,
 
                             child: TextFormField(
+                              controller: controller.mobileNumberController,
+                              validator: controller.validateMobile,
                               decoration: InputDecoration(
                                   hintText: 'Mobile No',hintStyle: TextStyles.textFieldSmallHint
                               ),
@@ -101,7 +114,8 @@ class AddNewUserScreen extends StatelessWidget {
                         20.pw,
 
                       ],
-                    ),
+                    ),),
+
 
                     20.ph,
 
@@ -614,6 +628,19 @@ class AddNewUserScreen extends StatelessWidget {
                       ],
                     ),
                     10.ph,
+                    
+                    Center(
+                      child: ElevatedButtonW(
+                          buttonText: 'Add New User ' ,
+                           width: 250,
+                        onTap: (){
+                            print("button tapped");
+
+                            controller.registerAdmin(context);
+                            print("button tapped again ");
+                            
+                        },
+                      ),)
 
                   ],
                 ),

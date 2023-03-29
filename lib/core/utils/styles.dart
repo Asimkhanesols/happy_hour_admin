@@ -58,7 +58,7 @@ class TextStyles {
       fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600);
 
   static TextStyle? get primaryColorText =>
-      h3?.copyWith(color: primaryColor, fontWeight: FontWeight.bold);
+      h1Bold?.copyWith(color: primaryColor, fontWeight: FontWeight.bold);
   static TextStyle? get primarySmallText =>
       bodyText?.copyWith(color: primaryColor, fontSize: 14);
   static TextStyle? get buttonText =>
