@@ -1,14 +1,19 @@
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/widgets/alert_dialogue.dart';
+import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_controller.dart';
+import 'package:add_happy_hour_admin/view/screen/happy_hours/active_happy_hours_screen.dart';
+ import 'package:add_happy_hour_admin/view/widgets/alert_dialogue.dart';
 import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
 import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/utils/styles.dart';
 import '../../widgets/buttons.dart';
 
 class HappyHourRequestScreen extends StatelessWidget {
-  const HappyHourRequestScreen({Key? key}) : super(key: key);
+   HappyHourRequestScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(DashBoardController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +49,42 @@ class HappyHourRequestScreen extends StatelessWidget {
                           ],
                         ),
                         const Spacer(),
+                        Obx(() => Container(
+                          height: 40,
+
+                          width: 200,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: const [
+                                BoxShadow(color: Colors.black26, blurRadius: 4.0, spreadRadius: 0.3)
+                              ],
+                              color: whiteColor
+                          ),
+                          child: Center(
+                            child: DropdownButton(
+                              value: controller.option.value,
+                              isDense: true,
+                              underline: const SizedBox(),
+                              style: TextStyles.bottomBlackText,
+                              icon: const Icon(CupertinoIcons.arrowtriangle_down_circle , color: primaryColor,),
+                              items: ['Active happy hour', 'Happy hour request'].map((item) {
+                                return DropdownMenuItem(
+                                  value: item,
+                                  child: Text(item),
+                                );
+                              }).toList(),
+                              onChanged: (newValue) {
+                                controller.option.value = newValue!;
+                                if (newValue == 'Active happy hour') {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                                    return const ActiveHappyHourScreen();
+                                  }));
+
+                                }
+                              },),
+                          ),
+                        ),),
+                        20.pw,
                         SizedBox(
                           width: 240,
                           child: TextFormField(
@@ -56,7 +97,7 @@ class HappyHourRequestScreen extends StatelessWidget {
                                     borderSide: BorderSide.none)),
                           ),
                         ),
-                        20.pw,
+
                         20.pw,
                       ],
                     ),

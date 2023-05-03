@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Admin {
+class AdminModel {
   String name;
   String email;
   String mobile;
 
-  Admin({required this.name, required this.email, required this.mobile});
+  AdminModel({required this.name, required this.email, required this.mobile});
 
 
-  factory Admin.fromSnapshot(DocumentSnapshot snapshot) {
+  factory AdminModel.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
-    return Admin(
+    return AdminModel(
         name: data['name'] ?? '',
         email: data['email'] ?? '',
         mobile: data['mobile'] ?? '',
@@ -18,3 +18,5 @@ class Admin {
   }
 
 }
+
+

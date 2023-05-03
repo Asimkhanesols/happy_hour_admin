@@ -1,23 +1,39 @@
 import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController{
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    // Check if "Remember Me" was selected in a previous session
+    bool rememberMeStatus = box.read('rememberMe') ?? false;
+    rememberMe.value = rememberMeStatus;
+
+    // If "Remember Me" was selected, populate the email and password fields
+    if (rememberMe.value) {
+      String? savedEmail = box.read('email');
+      String? savedPassword = box.read('password');
+      emailController.text = savedEmail ?? '';
+      passwordController.text = savedPassword ?? '';
+    }
+  }
+  // variables
+  var rememberMe = false.obs;
+
   final box = GetStorage();
-
   final formKey = GlobalKey<FormState>();
-
-  //loading
   var isLoading = false.obs;
 
   // * observable variables.
-  final _rememberMe = false.obs;
-  bool get rememberMe => _rememberMe.value;
-  set rememberMe(value) => _rememberMe.value = value;
+  // final _rememberMe = false.obs;
+  // bool get rememberMe => _rememberMe.value;
+  // set rememberMe(value) => _rememberMe.value = value;
 
 
 
@@ -26,7 +42,10 @@ class LoginController extends GetxController{
 
 
   String loginRememberMeStatus = "loginRememberMeStatus";
-  // validation
+  String loginEmailKey = 'loginEmailKey';
+  String loginPasswordKey = 'loginPasswordKey';
+
+  // validation of text filed name and password
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -46,7 +65,12 @@ class LoginController extends GetxController{
     return null;
   }
 
-  Future createUser() async {
+
+
+
+  // function for log in Admin
+
+  Future loginAdmin() async {
     try {
       // Set isLoading to true to show the loading indicator
       isLoading.value = true;
@@ -54,7 +78,9 @@ class LoginController extends GetxController{
       FirebaseAuth auth = FirebaseAuth.instance;
       if (formKey.currentState!.validate()) {
         // // Save the "Remember Me" status to GetStorage
-        // box.write(loginRememberMeStatus, rememberMe);
+        //  box.write(loginRememberMeStatus, rememberMe);
+
+
         // await auth.signInWithEmailAndPassword(
         //   email: emailController.text,
         //   password: passwordController.text,
@@ -64,10 +90,17 @@ class LoginController extends GetxController{
          auth.signInWithEmailAndPassword(
              email: emailController.text,
              password: passwordController.text);
-         box.write('user_email', userCredential.user!.email);
+        // box.write('user_email', userCredential.user!.email);
+         if (rememberMe.value) {
+           box.write('email', emailController.text);
+           box.write('password', passwordController.text);
+         } else {
+           // Clear the email and password fields in GetStorage
+           box.remove('email');
+           box.remove('password');
+         }
 
-
-        Get.to(() =>   DashBoardScreen());
+        Get.offAll(() =>   DashBoardScreen());
       } else {
         'user not found ';
       }

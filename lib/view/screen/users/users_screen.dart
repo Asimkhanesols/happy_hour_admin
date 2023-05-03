@@ -1,6 +1,7 @@
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
 import 'package:add_happy_hour_admin/view/screen/users/add_new_user.dart';
 import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
+import 'package:add_happy_hour_admin/view/screen/users/widgets/app_users.dart';
 import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
 import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
 import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
@@ -9,8 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/data/model/admin_model.dart';
-import '../../../core/data/model/user_model.dart';
-  import '../../../core/utils/styles.dart';
+ import '../../../core/utils/styles.dart';
 
 
 
@@ -71,7 +71,7 @@ class UsersScreen extends StatelessWidget {
                     SizedBox(
                       width: 240,
                       child: TextFormField(
-                        decoration: InputDecoration(
+                         decoration: InputDecoration(
                             hintText: "Search here" , hintStyle: TextStyles.textFieldSmallHint,
                             suffixIcon: Icon(Icons.search),
                             border: OutlineInputBorder(
@@ -79,6 +79,8 @@ class UsersScreen extends StatelessWidget {
                                 borderSide: BorderSide.none
                             )
                         ),
+
+
 
                       ),
                     )
@@ -139,8 +141,8 @@ class UsersScreen extends StatelessWidget {
                    if(snapshot.connectionState == ConnectionState.waiting){
                      return const CircularProgressIndicator();
                    }
-                   final List<Admin> admins = snapshot.data!.docs.map((DocumentSnapshot document) {
-                     return Admin.fromSnapshot(document);
+                   final List<AdminModel> admins = snapshot.data!.docs.map((DocumentSnapshot document) {
+                     return AdminModel.fromSnapshot(document);
                    }).toList();
 
                    return ListView.builder(
@@ -149,7 +151,7 @@ class UsersScreen extends StatelessWidget {
                        itemCount: snapshot.data!.docs.length,
                        itemBuilder: (context, index) {
 
-                         final Admin admin = admins[index];
+                         final AdminModel admin = admins[index];
                          return
                            Table(
                              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -221,19 +223,29 @@ class UsersScreen extends StatelessWidget {
                   children: [
                     Text('App Users',style: TextStyles.boldBodyText,),
                     const Spacer(),
-                    SizedBox(
-                      width: 240,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            hintText: "Search here" , hintStyle: TextStyles.textFieldSmallHint,
-                            suffixIcon: const Icon(Icons.search),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(2),
-                                borderSide: BorderSide.none
-                            )
-                        ),
+                    GetBuilder<UserController>(
+                       builder: (controller) {
+                        return SizedBox(
+                          width: 240,
+                          child: TextFormField(
+                               controller: controller.searchUserController,
+                            decoration: InputDecoration(
+                                hintText: "Search here" , hintStyle: TextStyles.textFieldSmallHint,
+                                suffixIcon: const Icon(Icons.search),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(2),
+                                    borderSide: BorderSide.none
+                                )
+                            ),
+                            onChanged: (value){
+                              controller.updateSearchQuery(value);
+                              controller.update();
+                            },
 
-                      ),
+
+                          ),
+                        );
+                      }
                     )
                   ],
                 ),
@@ -258,9 +270,7 @@ class UsersScreen extends StatelessWidget {
                    4: FlexColumnWidth(0.15),
                    5: FlexColumnWidth(0.15),
                    6: FlexColumnWidth(0.15),
-                   7: FlexColumnWidth(0.15),
-                   8: FlexColumnWidth(0.15),
-                   9: FlexColumnWidth(0.2),
+                   7: FlexColumnWidth(0.2),
 
                  },
                  children: [
@@ -285,150 +295,21 @@ class UsersScreen extends StatelessWidget {
                              child: Text('Mobile Number',style: TextStyles.tableText,)),
                          TableCell(
                              child: Text('Happy Hour',style: TextStyles.tableText,)),
-                         TableCell(
-                             child: Text('Email',style: TextStyles.tableText,)),
-                         TableCell(
-                             child: Text('Mobile Number',style: TextStyles.tableText,)),
-                         TableCell(
+                          TableCell(
                              child: Center(child: Text('Action',style: TextStyles.tableText,))),
 
                        ]),
 
                  ],
                ),
+                     //--------- App user table
 
-               StreamBuilder<QuerySnapshot>(
-                 stream: FirebaseFirestore.instance.collection('users').snapshots(),
-                 builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot) {
 
-                   if(snapshot.hasError){
-                     return Text('Error: ${snapshot.error}');
+                 GetBuilder<UserController>(
+                    builder: (controller) {
+                     return AppUserW();
                    }
-                   if(snapshot.connectionState == ConnectionState.waiting){
-                     return const CircularProgressIndicator();
-                   }
-                   final List<User> users = snapshot.data!.docs.map((DocumentSnapshot document) {
-                     return User.fromSnapshot(document);
-                   }).toList();
-                   return ListView.builder(
-                       shrinkWrap: true,
-                       physics: const ScrollPhysics(),
-                       itemCount: snapshot.data!.docs.length,
-                       itemBuilder: (context, index) {
-
-                         final User user = users[index];
-                         // DocumentSnapshot document = snapshot.data!.docs[index];
-                         //
-                         // Map<String, dynamic>? data = document.data() as Map<String, dynamic>?; // Cast to Map type
-                         //
-                         // String userId = document.id;
-                         // String? userName = data?['username'] as String;
-                         // String? email = data?['email'] as String?;
-                         // String? accountType = data?['accountType'] as String?;
-                         // String? mobileNumber = data?['mobilenumber'] as String?;
-                         return
-                           Table(
-                             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-
-                             border: const TableBorder(
-                               // bottom: BorderSide(color: Colors.black, width: 1),
-                               // borderRadius: BorderRadius.only(topRight: Radius.circular(60),topLeft: Radius.circular(15),),
-                               //   horizontalInside: BorderSide(color: Colors.red, width: 2),
-                             ),
-                             columnWidths: const {
-                               0: FlexColumnWidth(0.1),
-                               1: FlexColumnWidth(0.15),
-                               2: FlexColumnWidth(0.15),
-                               3: FlexColumnWidth(0.15),
-                               4: FlexColumnWidth(0.15),
-                               5: FlexColumnWidth(0.15),
-                               6: FlexColumnWidth(0.15),
-                               7: FlexColumnWidth(0.15),
-                               8: FlexColumnWidth(0.15),
-                               9: FlexColumnWidth(0.2),
-
-
-                             },
-                             children: [
-                               TableRow(
-                                   decoration:
-                                   const BoxDecoration(color: Colors.white),
-                                   children: [
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text("${index +1} "),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                                           child: Text(user.id, style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(user.userName ?? '', style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                                           child: Text(user.isBusiness ? 'Bussiness ' : "Standard  ", style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(user.email ?? '', style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(user.mobileNumber ?? '', style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text('09', style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text('happyhour@gmail.com', style: TextStyles.smallBlackText,),
-                                         )),
-                                     TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text('0915507397', style: TextStyles.smallBlackText,),
-                                         )),
-                                       TableCell(
-                                         child: Padding(
-                                           padding:
-                                           EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: ElevatedButtonW(
-                                             buttonText: 'Action'
-                                             ,height: 30,
-                                             width: 80,
-                                             onTap: (){
-                                               //controller.deleteUser("${controller.auth.currentUser}");
-                                             },
-                                           ),
-                                         )),
-
-                                   ]),
-
-                             ],
-                           );
-                       }   );
-                 }
-               ),
+                 ),
                 20.ph,
                 Row(
                   children: [
@@ -459,6 +340,7 @@ class UsersScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 

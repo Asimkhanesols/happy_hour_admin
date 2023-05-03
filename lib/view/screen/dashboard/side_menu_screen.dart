@@ -1,6 +1,6 @@
 import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/happy_hours/happy_hours_screen.dart';
+import 'package:add_happy_hour_admin/view/screen/happy_hours/active_happy_hours_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
