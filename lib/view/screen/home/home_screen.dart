@@ -30,8 +30,9 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Welcome Lorem Ipsum',style: TextStyles.smallBlackText,),
+                      Text('Welcome Admin',style: TextStyles.h1?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
                       5.ph,
                       Text('Hi, your analytics are all set',style: TextStyles.greyMostSmallBodyText, )
                     ],
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Hello, George', style: TextStyles.h1?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
+                          Text('Hello, Admin', style: TextStyles.h1?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
                           5.ph,
                           Text('admin', style: TextStyles.greyMostSmallBodyText)
                         ],

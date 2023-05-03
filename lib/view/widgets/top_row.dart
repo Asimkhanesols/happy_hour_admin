@@ -31,7 +31,7 @@ class TopRow extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Hello, George', style: TextStyles.smallBlackText),
+                Text('Hello, George', style: TextStyles.h1?.copyWith(fontSize: 12,fontWeight: FontWeight.bold)),
                 5.ph,
                 Text('admin', style: TextStyles.greyMostSmallBodyText)
               ],

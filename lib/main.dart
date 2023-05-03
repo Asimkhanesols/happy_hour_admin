@@ -13,7 +13,7 @@ Future <void> main() async{
 
 WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+  options: DefaultFirebaseOptions.web,
 );
 
 
@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
       //     ],
       //   );
       // },
-      title: 'Happy hour',
+      title: 'Happy hour admin',
       theme: CustomTheme.lightTheme,
       home: FirebaseAuth.instance.currentUser == null ?
-      LoginScreen() :  DashBoardScreen()
+      LoginScreen() : DashBoardScreen()
     );
   }
 }

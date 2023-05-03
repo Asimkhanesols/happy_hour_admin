@@ -28,7 +28,7 @@ class HomeController extends GetxController{
     getTotalHappyHours();
 
   }
-
+   // total users of the app
   void fetchUserCount() async {
     try {
       var querySnapshot =
@@ -38,6 +38,8 @@ class HomeController extends GetxController{
       print(e);
     }
   }
+
+  // total business Account
   void getBusinessUsers() async {
     try {
       final querySnapshot = await FirebaseFirestore.instance
@@ -49,6 +51,10 @@ class HomeController extends GetxController{
       print('Error: $e');
     }
   }
+
+
+  // total Standard  Account
+
   void getStandardUsers() async {
     try {
       final querySnapshot = await FirebaseFirestore.instance
@@ -60,6 +66,8 @@ class HomeController extends GetxController{
       print('Error: $e');
     }
   }
+
+  // total happy hour
   void getTotalHappyHours() async {
     try {
       var querySnapshot =

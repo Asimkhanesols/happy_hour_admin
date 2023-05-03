@@ -38,10 +38,12 @@ class LoginScreen extends StatelessWidget {
                         height: 100,
                       ),
                       40.ph,
+                      // form for email and password
                       Form(
                         key: controller.formKey,
                           child: Column(
                         children: [
+                          // email
                           TextFormField(
                             controller: controller.emailController,
                             validator: controller.validateEmail,
@@ -54,6 +56,7 @@ class LoginScreen extends StatelessWidget {
                                 )),
                           ),
                           30.ph,
+                          // password text filed
                           TextFormField(
                             controller: controller.passwordController,
                             validator: controller.validatePassword,
@@ -67,12 +70,13 @@ class LoginScreen extends StatelessWidget {
                                 )),
                           ),
                           20.ph,
+                          // remember me  the Admin
                           Obx(() => ListTile(
                             leading: Checkbox(
                               activeColor: whiteColor,
-                              value: controller.rememberMe,
+                              value: controller.rememberMe.value,
                               onChanged: (value) {
-                                controller.rememberMe = value;
+                                controller.rememberMe.value = value!;
                               },
                             ),
                             title: const Text('Remember me'),
@@ -84,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                           ElevatedButtonW(
 
                             buttonText:  'Log in ',
-                            onTap: controller.createUser,
+                            onTap: controller.loginAdmin,
                           ),
                           20.ph,
                         ],

@@ -78,6 +78,7 @@ class CustomTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
+        hoverColor: Colors.white,
         suffixIconColor: Colors.grey,
          // hintStyle: TextStyles.greyBodyText?.copyWith(
          //   fontWeight: FontWeight.normal
@@ -93,6 +94,7 @@ class CustomTheme {
             borderSide: BorderSide.none),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(50),
+
 
             borderSide: BorderSide.none),
         errorBorder: OutlineInputBorder(

@@ -1,10 +1,11 @@
 import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
 import 'package:add_happy_hour_admin/core/utils/colors.dart';
 import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_controller.dart';
-import 'package:add_happy_hour_admin/view/widgets/app_bar.dart';
-import 'package:flutter/cupertino.dart';
+ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+// dashboard screen for the side menu and their their relevant screen
 
 class DashBoardScreen extends StatelessWidget {
   DashBoardScreen({Key? key}) : super(key: key);
@@ -19,6 +20,8 @@ class DashBoardScreen extends StatelessWidget {
 
         body: Obx(() => Row(
               children: <Widget>[
+
+                //Side menu
                 Stack(
                   children: [
                     NavigationRail(
@@ -177,6 +180,8 @@ class DashBoardScreen extends StatelessWidget {
                         ))
                   ],
                 ),
+
+                // main body or main part of screen
                 Expanded(
                     child: controller.isNew.value == true
                         ? controller.newScreens
