@@ -15,3 +15,7 @@ const imgDelete = "assets/images/delete.png";
 const imgPhoto = "assets/images/photo.png";
 const imgPhoto2 = "assets/images/photo2.png";
 
+
+
+const dummy = 'https://www.pexels.com/photo/white-background-with-brown-color-in-vertical-format-4046718/';
+

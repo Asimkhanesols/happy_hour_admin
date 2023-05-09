@@ -16,7 +16,6 @@ import '../home/home_screen.dart';
 
 class DashBoardController extends GetxController{
 
-  String? docId;
 
   // options for drop down
   var selectedOption = 'Active happy hour'.obs;

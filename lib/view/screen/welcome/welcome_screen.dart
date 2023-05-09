@@ -1,12 +1,8 @@
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../../../core/utils/assets_constants.dart';
-import '../../../core/utils/styles.dart';
+
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/utils/export.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

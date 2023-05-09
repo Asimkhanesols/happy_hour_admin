@@ -1,15 +1,9 @@
-import 'package:add_happy_hour_admin/view/screen/flag_report/report_hour_controller.dart';
-import 'package:add_happy_hour_admin/view/screen/flag_report/widget/claim_report_hour.dart';
- import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../core/utils/colors.dart';
-import '../../../core/utils/styles.dart';
-import '../../widgets/buttons.dart';
-import '../../widgets/top_row.dart';
-import 'flag_report_screen.dart';
+
+import 'package:add_happy_hour_admin/view/screen/flag_report/report_hour_controller.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/utils/export.dart';
 
 class ClaimHourScreen extends StatelessWidget {
   ClaimHourScreen({Key? key}) : super(key: key);

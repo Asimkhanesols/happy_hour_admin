@@ -1,8 +1,6 @@
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:flutter/material.dart';
 
-import '../../core/utils/assets_constants.dart';
-import '../../core/utils/styles.dart';
+
+import '../../core/utils/export.dart';
 
 class TopRow extends StatelessWidget {
   const TopRow({

@@ -1,10 +1,10 @@
 // ignore_for_file: sized_box_for_whitespace
 
-import 'package:flutter/material.dart';
+
+
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../core/utils/colors.dart';
-import 'package:get/get.dart';
+import '../../core/utils/export.dart';
 
 class YearChartW extends StatelessWidget {
   const YearChartW({super.key});

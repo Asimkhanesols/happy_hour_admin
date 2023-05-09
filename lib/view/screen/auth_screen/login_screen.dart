@@ -1,11 +1,9 @@
-import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/auth_screen/login_controller.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../core/utils/styles.dart';
+
+
+
+import '../../../core/utils/export.dart';
+import 'login_controller.dart';
+
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);

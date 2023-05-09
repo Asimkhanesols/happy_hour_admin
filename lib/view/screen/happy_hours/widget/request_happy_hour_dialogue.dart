@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../core/utils/export.dart';
 
-AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Object?> happyHourRef,  ) {
+AlertDialog requestHappyHourDetailDialogueW(String? id, CollectionReference<Object?> happyHourRef,  ) {
   return AlertDialog(
     scrollable: true,
     alignment: Alignment.center,
@@ -29,7 +29,7 @@ AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Objec
                   width: 1,
                 ),
                 Text(
-                  'Happy Hour Details',
+                  'Request Happy Hour Details',
                   style: TextStyles.h1,
                 ),
                 const SizedBox(),
@@ -42,7 +42,7 @@ AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Objec
             ),
             40.ph,
             Text(
-              'Happy Hour Details',
+              'Request Happy Hour Details',
               style: TextStyles.boldBodyText,
             ),
             10.ph,
@@ -243,201 +243,6 @@ AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Objec
                   );
                 }),
 
-            // SizedBox(
-            //   height: Get.height,
-            //   width: Get.width * 0.45,
-            //   child: FirestoreListView(
-            //       query: FirebaseFirestore.instance
-            //           .collection('happyhours'),
-            //
-            //       shrinkWrap: true,
-            //       scrollDirection: Axis.vertical,
-            //       itemBuilder: (BuildContext context,
-            //           DocumentSnapshot<Map<String, dynamic>> snapshot) {
-            //         final happyHour = HappyHour.fromMap(snapshot);
-            //         return Column(
-            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //           children: [
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'ID',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.id ?? '',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Business Name',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.businessName ?? '',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Business Address',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.businessAddress ?? '',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Phone Number',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.phoneNumber ?? '',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Day',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.day![0]['Hday'],
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Time',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.day!.isEmpty
-            //                       ? ''
-            //                       : "${happyHour.day?[0]['HfromTime']}  -"
-            //                           "${happyHour.day?[0]['HtoTime']}",
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Food item',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.foodItem!
-            //                       .map((item) => item['foodname'])
-            //                       .join(','),
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Drink Specials',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.dailySpecial!
-            //                       .map((item) => item['day'])
-            //                       .join(', '),
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Daily Specials',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   'abc ,xyz',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Events',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.event!
-            //                       .map((item) => item['name'])
-            //                       .join(', '),
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Amenities',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.amenities!.join(', '),
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //             10.ph,
-            //             Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 Text(
-            //                   'Bar Type',
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //                 Text(
-            //                   happyHour.barType!.join(', '),
-            //                   style: TextStyles.smallBlackText,
-            //                 ),
-            //               ],
-            //             ),
-            //           ],
-            //         );
-            //       }),
-            // ),
             30.ph,
             StreamBuilder<DocumentSnapshot>(
                 stream: FirebaseFirestore.instance
@@ -453,7 +258,7 @@ AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Objec
                   }
                   final happyHour = HappyHourModel.fromMap(snapshot.data!);
 
-                   return Wrap(
+                  return Wrap(
                     children: [
 
 
@@ -571,19 +376,28 @@ AlertDialog activeHappyHourDetailDialogueW(String? id, CollectionReference<Objec
               ],
             ),
             30.ph,
-            Center(
-              child: ElevatedButtonW(
-                buttonText: 'Close',
-                width: 260,
-                height: 50,
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return deleteHappyHourDialogueW();
-                      });
-                },
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                    child: ElevatedButtonW(
+                      buttonText: 'Reject',
+                      buttonTextColor: blackColor,
+                      borderColor: primaryColor,
+                      buttonColor: whiteColor,
+                    )),
+                Expanded(
+                    child: ElevatedButtonW(
+                      buttonText: 'Approve',
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return approveHappyHourDialogueW();
+                            });
+                      },
+                    ))
+              ],
             )
           ]);
     }),
@@ -646,6 +460,79 @@ AlertDialog deleteHappyHourDialogueW() {
                   buttonText: 'Yes',
                   height: 40,
                   width: 120,
+                  onTap: () {
+                    Get.back();
+                    Get.back();
+                  },
+                )
+              ],
+            ),
+            30.ph,
+          ]);
+    }),
+  );
+}
+
+
+
+
+AlertDialog approveHappyHourDialogueW() {
+  return AlertDialog(
+    scrollable: true,
+    alignment: Alignment.center,
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(15))),
+    backgroundColor: whiteColor,
+    insetPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+    content: Builder(builder: (context) {
+      return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: Get.height * 0.2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 1,
+                ),
+                Text(
+                  'Approve Happy Hour',
+                  style: TextStyles.bodyText,
+                ),
+                InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Icon(CupertinoIcons.clear)),
+              ],
+            ),
+            50.ph,
+            Text(
+              'Do you want to approve this Happy Hour or reject?',
+              style: TextStyles.smallBlackText,
+            ),
+            50.ph,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButtonW(
+                  buttonText: 'Reject',
+                  buttonColor: halfGrey,
+                  buttonTextColor: blackColor,
+                  borderColor: primaryColor,
+                  height: 40,
+                  width: 140,
+                  onTap: () {
+                    Get.back();
+                  },
+                ),
+                ElevatedButtonW(
+                  buttonText: 'Approve',
+                  height: 40,
+                  width: 140,
                   onTap: () {
                     Get.back();
                     Get.back();

@@ -70,6 +70,7 @@ class LoginController extends GetxController{
 
   // function for log in Admin
 
+
   Future loginAdmin() async {
     try {
       // Set isLoading to true to show the loading indicator

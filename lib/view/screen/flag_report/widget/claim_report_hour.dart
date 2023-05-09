@@ -1,11 +1,6 @@
 
-import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import '../../../../core/data/model/happy_hour_model.dart';
-import '../../../../core/utils/styles.dart';
-import '../../../widgets/buttons.dart';
 
+import '../../../../core/utils/export.dart';
 
 class ClaimedHourTableW extends StatelessWidget {
   ClaimedHourTableW({

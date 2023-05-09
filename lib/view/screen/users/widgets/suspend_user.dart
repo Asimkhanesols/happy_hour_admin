@@ -1,18 +1,12 @@
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/styles.dart';
-import '../../../widgets/buttons.dart';
-import '../user_controller.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../../../core/utils/export.dart';
 
 AlertDialog suspendUserDialogueW(String userId, CollectionReference<Object?> usersRef) {
   var controller = Get.put(UserController());
-  final CollectionReference usersRef =
-  FirebaseFirestore.instance.collection('users');
+  // final CollectionReference usersRef =
+  // FirebaseFirestore.instance.collection('users');
   return AlertDialog(
     scrollable: true,
     alignment: Alignment.center,

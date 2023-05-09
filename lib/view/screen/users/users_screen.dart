@@ -1,18 +1,9 @@
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/users/add_new_user.dart';
-import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
-import 'package:add_happy_hour_admin/view/screen/users/widgets/app_users.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../core/data/model/admin_model.dart';
- import '../../../core/utils/styles.dart';
 
 
+
+
+import '../../../core/utils/export.dart';
+import 'add_new_user.dart';
 
 class UsersScreen extends StatelessWidget {
     UsersScreen({Key? key}) : super(key: key);
@@ -73,7 +64,7 @@ class UsersScreen extends StatelessWidget {
                       child: TextFormField(
                          decoration: InputDecoration(
                             hintText: "Search here" , hintStyle: TextStyles.textFieldSmallHint,
-                            suffixIcon: Icon(Icons.search),
+                            suffixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(2),
                                 borderSide: BorderSide.none
@@ -192,19 +183,19 @@ class UsersScreen extends StatelessWidget {
                                          child: Padding(
                                            padding:
                                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(admin.name ?? '', style: TextStyles.smallBlackText,),
+                                           child: Text(admin.name, style: TextStyles.smallBlackText,),
                                          )),
                                      TableCell(
                                          child: Padding(
                                            padding:
                                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(admin.email ?? '', style: TextStyles.smallBlackText,),
+                                           child: Text(admin.email, style: TextStyles.smallBlackText,),
                                          )),
                                      TableCell(
                                          child: Padding(
                                            padding:
                                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                                           child: Text(admin.mobile ?? '', style: TextStyles.smallBlackText,),
+                                           child: Text(admin.mobile, style: TextStyles.smallBlackText,),
                                          )),
 
 
@@ -240,7 +231,7 @@ class UsersScreen extends StatelessWidget {
                             onChanged: (value){
                               controller.updateSearchQuery(value);
                               controller.update();
-                            },
+                             },
 
 
                           ),

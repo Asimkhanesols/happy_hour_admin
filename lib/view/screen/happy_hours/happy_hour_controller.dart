@@ -11,6 +11,11 @@ import '../../../core/data/model/happy_hour_model.dart';
 
 class HappyHourController extends GetxController{
 
+  // options for drop down
+  var selectRequest = 'Active happy hour'.obs;
+  // option for request happy hour
+  var selectActive = 'Happy hour request'.obs;
+
 
 
   var searchActiveHappyHourController = TextEditingController();

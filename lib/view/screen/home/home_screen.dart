@@ -1,14 +1,8 @@
-import 'package:add_happy_hour_admin/view/widgets/chart_widget.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:add_happy_hour_admin/view/widgets/year_chart.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../core/utils/assets_constants.dart';
-import '../../../core/utils/colors.dart';
-import '../../../core/utils/styles.dart';
-import 'home_controller.dart';
 
+
+import '../../../core/utils/export.dart';
+import '../../widgets/year_chart.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -87,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   dashBoardItemWidget(
                       title: 'Total Happy hours Request',
-                      number: "234"
+                      number: "${controller.totalHappyHourRequest}"
 
                   ),
                   dashBoardItemWidget(
