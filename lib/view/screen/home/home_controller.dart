@@ -16,6 +16,11 @@ class HomeController extends GetxController{
   // total happy hours
 
   var totalHappyHours = 0.obs;
+  // total happy hour request
+
+  var totalHappyHourRequest = 0.obs;
+
+
 
 
 
@@ -26,6 +31,7 @@ class HomeController extends GetxController{
     getBusinessUsers();
     getStandardUsers();
     getTotalHappyHours();
+    getTotalHappyHoursRequest();
 
   }
    // total users of the app
@@ -73,6 +79,15 @@ class HomeController extends GetxController{
       var querySnapshot =
       await FirebaseFirestore.instance.collection('happyhours').get();
       totalHappyHours.value = querySnapshot.size;
+    } catch (e) {
+      print(e);
+    }
+  }
+  void getTotalHappyHoursRequest() async {
+    try {
+      var querySnapshot =
+      await FirebaseFirestore.instance.collection('happyhours').where('isApproved', isEqualTo: false).get();
+      totalHappyHourRequest.value = querySnapshot.size;
     } catch (e) {
       print(e);
     }

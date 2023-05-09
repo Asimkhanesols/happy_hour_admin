@@ -1,19 +1,12 @@
-import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
-import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../core/data/model/happy_hour_model.dart';
-import '../../core/data/model/user_model.dart';
-import '../../core/utils/colors.dart';
-import '../../core/utils/styles.dart';
+
 
 
 
 // request happy hour
+import 'package:flutter/cupertino.dart';
+
+import '../../core/utils/export.dart';
+
 AlertDialog requestHappyHourDialogueW() {
   return AlertDialog(
     scrollable: true,
@@ -333,103 +326,11 @@ AlertDialog requestHappyHourDialogueW() {
               ],
             ),
             30.ph,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                    child: ElevatedButtonW(
-                  buttonText: 'Reject',
-                  buttonTextColor: blackColor,
-                  borderColor: primaryColor,
-                  buttonColor: whiteColor,
-                )),
-                Expanded(
-                    child: ElevatedButtonW(
-                  buttonText: 'Approve',
-                  onTap: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return approveHappyHourDialogueW();
-                        });
-                  },
-                ))
-              ],
-            )
           ]);
     }),
   );
 }
 
-AlertDialog approveHappyHourDialogueW() {
-  return AlertDialog(
-    scrollable: true,
-    alignment: Alignment.center,
-    shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(15))),
-    backgroundColor: whiteColor,
-    insetPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-    content: Builder(builder: (context) {
-      return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              width: Get.height * 0.2,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 1,
-                ),
-                Text(
-                  'Approve Happy Hour',
-                  style: TextStyles.bodyText,
-                ),
-                InkWell(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(CupertinoIcons.clear)),
-              ],
-            ),
-            50.ph,
-            Text(
-              'Do you want to approve this Happy Hour or reject?',
-              style: TextStyles.smallBlackText,
-            ),
-            50.ph,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButtonW(
-                  buttonText: 'Reject',
-                  buttonColor: halfGrey,
-                  buttonTextColor: blackColor,
-                  borderColor: primaryColor,
-                  height: 40,
-                  width: 140,
-                  onTap: () {
-                    Get.back();
-                  },
-                ),
-                ElevatedButtonW(
-                  buttonText: 'Approve',
-                  height: 40,
-                  width: 140,
-                  onTap: () {
-                    Get.back();
-                    Get.back();
-                  },
-                )
-              ],
-            ),
-            30.ph,
-          ]);
-    }),
-  );
-}
 
 AlertDialog flagReportDetailDialogueW(String? hourId, String? uid) {
   return AlertDialog(
@@ -575,7 +476,7 @@ AlertDialog flagReportDetailDialogueW(String? hourId, String? uid) {
                           style: TextStyles.smallBlackText,
                         ),
                         Text(
-                          user.userName ?? '',
+                          user.userName,
                           style: TextStyles.smallBlackText,
                         ),
                       ],
@@ -605,27 +506,28 @@ AlertDialog flagReportDetailDialogueW(String? hourId, String? uid) {
                           style: TextStyles.smallBlackText,
                         ),
                         Text(
-                          user.mobileNumber ?? '',
+                          user.mobileNumber,
                           style: TextStyles.smallBlackText,
                         ),
                       ],
                     ),
                     10.ph,
-                    Text(
-                      'Report Details',
-                      style: TextStyles.bodyText,
-                    ),
-                    20.ph,
-                    Text(
-                      'Text',
-                      style: TextStyles.bodyText,
-                    ),
-                    20.ph,
+
 
                   ],
                 );
               }
             ),
+              Text(
+                'Report Details',
+                style: TextStyles.bodyText,
+              ),
+              20.ph,
+              Text(
+                'Text',
+                style: TextStyles.bodyText,
+              ),
+              20.ph,
 
 
 

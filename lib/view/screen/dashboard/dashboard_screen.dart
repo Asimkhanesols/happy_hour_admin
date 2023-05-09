@@ -1,9 +1,6 @@
-import 'package:add_happy_hour_admin/core/utils/assets_constants.dart';
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_controller.dart';
  import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+import '../../../core/utils/export.dart';
 
 // dashboard screen for the side menu and their their relevant screen
 
@@ -21,7 +18,7 @@ class DashBoardScreen extends StatelessWidget {
         body: Obx(() => Row(
               children: <Widget>[
 
-                //Side menu
+                //Side menu of dashboard screen
                 Stack(
                   children: [
                     NavigationRail(

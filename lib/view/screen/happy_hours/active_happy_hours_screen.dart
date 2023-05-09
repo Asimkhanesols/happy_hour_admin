@@ -1,34 +1,21 @@
 
 
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_controller.dart';
-import 'package:add_happy_hour_admin/view/screen/happy_hours/happy_hour_controller.dart';
-import 'package:add_happy_hour_admin/view/screen/happy_hours/happy_hour_request.dart';
-import 'package:add_happy_hour_admin/view/screen/happy_hours/widget/active_happy_hour_table.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../core/data/model/happy_hour_model.dart';
-import '../../../core/utils/assets_constants.dart';
-import '../../../core/utils/styles.dart';
-
-import '../../widgets/top_row.dart';
 // we return navigator , navigator used when we are doing nested
 // navigation in same context it just replace the current screen
 // with another screen or widget
+
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/utils/export.dart';
+
 class ActiveHappyHourScreen extends StatelessWidget {
     ActiveHappyHourScreen({Key? key}) : super(key: key);
 
   final happyHourController = Get.put(HappyHourController());
-    List<HappyHourModel>?  happyHours = [];
-  @override
+   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(DashBoardController());
-    return Container(
+     return Container(
       height: context.height,
       width: context.width,
       color: bgColor,
@@ -101,7 +88,7 @@ class ActiveHappyHourScreen extends StatelessWidget {
                               ),
                               child: Center(
                                 child: DropdownButton(
-                                  value: controller.selectedOption.value,
+                                  value: happyHourController.selectRequest.value,
                                   isDense: true,
                                   underline: const SizedBox(),
                                   style: TextStyles.bottomBlackText,
@@ -113,7 +100,7 @@ class ActiveHappyHourScreen extends StatelessWidget {
                                     );
                                   }).toList(),
                                   onChanged: (newValue) {
-                                    controller.selectedOption.value = newValue!;
+                                    happyHourController.selectRequest.value = newValue!;
                                     if (newValue == 'Happy request hour') {
                                      Navigator.push(context, MaterialPageRoute(builder: (context){
                                        return  HappyHourRequestScreen();
@@ -125,9 +112,7 @@ class ActiveHappyHourScreen extends StatelessWidget {
                             ),),
                             30.pw,
                             InkWell(
-                              onTap: () async {
-                                await happyHourController.generatePdf(happyHours!);                              },
-                              child: Container(
+                               child: Container(
                                   height: 40,
                                   width: 50,
                                   decoration: BoxDecoration(
@@ -158,7 +143,7 @@ class ActiveHappyHourScreen extends StatelessWidget {
                             ),
                             Spacer(),
                             Text('Previous',style: TextStyles.smallBlackText, ),
-                            ElevatedButtonW(
+                            const ElevatedButtonW(
                               buttonText: "1", height: 40,width: 40,buttonRadius: 4,),
 
                             20.pw,

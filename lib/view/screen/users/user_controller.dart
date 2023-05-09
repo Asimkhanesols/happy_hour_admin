@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
-import '../../../core/data/model/admin_model.dart';
+
+
+
+import 'package:add_happy_hour_admin/core/utils/export.dart';
 
 
 class UserController extends  GetxController{
@@ -34,13 +33,15 @@ class UserController extends  GetxController{
   void updateSearchQuery(String query) {
     searchQuery.value = query;
     update();
-   }
+
+  }
 
   void clear(){
 
     nameController.clear();
     emailController.clear();
     mobileNumberController.clear();
+
   }
 
   String? validateName (String? value){

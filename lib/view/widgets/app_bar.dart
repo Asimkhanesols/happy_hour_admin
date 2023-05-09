@@ -1,10 +1,7 @@
- import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:flutter/material.dart';
 
-import '../../core/utils/assets_constants.dart';
-import '../../core/utils/styles.dart';
-   AppBar appBarWidget(){
+   import '../../core/utils/export.dart';
+
+AppBar appBarWidget(){
 
      return AppBar(
        backgroundColor: whiteColor,

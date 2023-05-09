@@ -16,7 +16,9 @@ class HappyHourModel {
   String? businessCard;
   String? businessLogo;
   String? happyHourMenu;
-  String? card;
+  String? businessImage;
+
+
 
   HappyHourModel({
     this.id,
@@ -34,7 +36,7 @@ class HappyHourModel {
     this.businessCard,
     this.businessLogo,
     this.happyHourMenu,
-    this.card,
+    this.businessImage,
   });
 
   factory HappyHourModel.fromMap(DocumentSnapshot snapshot) {
@@ -56,7 +58,7 @@ class HappyHourModel {
       businessCard: data['businessCard'],
       businessLogo: data['businessLogo'],
       happyHourMenu: data['happyHourMenu'],
-      card: data['card'],
+      businessImage: data['businessImage'],
     );
   }
 
@@ -77,7 +79,7 @@ class HappyHourModel {
       'businessCard': businessCard,
       'businessLogo': businessLogo,
       'happyHourMenu': happyHourMenu,
-      'card': card,
+      'businessImage': businessImage,
     };
   }
 }

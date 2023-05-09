@@ -1,13 +1,7 @@
-import 'package:add_happy_hour_admin/core/utils/colors.dart';
-import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
-import 'package:add_happy_hour_admin/view/widgets/buttons.dart';
-import 'package:add_happy_hour_admin/view/widgets/size_box.dart';
-import 'package:add_happy_hour_admin/view/widgets/top_row.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
- import '../../../core/utils/styles.dart';
 
+
+import '../../../core/utils/export.dart';
 
 class AddNewUserScreen extends StatelessWidget {
     AddNewUserScreen({Key? key}) : super(key: key);

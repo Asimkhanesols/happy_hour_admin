@@ -1,13 +1,9 @@
-import 'package:add_happy_hour_admin/view/screen/users/user_controller.dart';
-import 'package:add_happy_hour_admin/view/screen/users/widgets/suspend_user.dart';
- import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
-import '../../../../core/data/model/user_model.dart';
-import '../../../../core/utils/styles.dart';
-import '../../../widgets/buttons.dart';
-import 'package:get/get.dart';
- class AppUserW extends StatelessWidget {
+
+import '../../../../core/utils/export.dart';
+import '../user_controller.dart';
+
+class AppUserW extends StatelessWidget {
     AppUserW({
     Key? key,
   }) : super(key: key);

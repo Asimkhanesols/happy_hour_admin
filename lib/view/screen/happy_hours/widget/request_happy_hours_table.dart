@@ -1,13 +1,15 @@
 
 
+import 'package:add_happy_hour_admin/view/screen/happy_hours/widget/request_happy_hour_dialogue.dart';
+
 import '../../../../core/utils/export.dart';
 
-class ActiveHappyHourTableW extends StatelessWidget {
-  ActiveHappyHourTableW({
+class RequestHappyHourTableW extends StatelessWidget {
+  RequestHappyHourTableW({
     Key? key,
   }) : super(key: key);
   final CollectionReference happyHourRef =
-      FirebaseFirestore.instance.collection('happyhours');
+  FirebaseFirestore.instance.collection('happyhours');
   final controller = Get.find<HappyHourController>();
 
   @override
@@ -35,48 +37,48 @@ class ActiveHappyHourTableW extends StatelessWidget {
             TableRow(decoration: BoxDecoration(color: Colors.white), children: [
               TableCell(
                   child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'ID',
-                  style: TextStyles.tableText,
-                ),
-              )),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'ID',
+                      style: TextStyles.tableText,
+                    ),
+                  )),
               TableCell(
                   child: Text(
-                'Business Name',
-                style: TextStyles.tableText,
-              )),
+                    'Business Name',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Text(
-                'Address',
-                style: TextStyles.tableText,
-              )),
+                    'Address',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Text(
-                'City',
-                style: TextStyles.tableText,
-              )),
+                    'City',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Text(
-                'User Name',
-                style: TextStyles.tableText,
-              )),
+                    'User Name',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Text(
-                'Email',
-                style: TextStyles.tableText,
-              )),
+                    'Email',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Text(
-                'Mobile Number',
-                style: TextStyles.tableText,
-              )),
+                    'Mobile Number',
+                    style: TextStyles.tableText,
+                  )),
               TableCell(
                   child: Center(
                       child: Text(
-                'Action',
-                style: TextStyles.tableText,
-              ))),
+                        'Action',
+                        style: TextStyles.tableText,
+                      ))),
             ]),
           ],
         ),
@@ -85,10 +87,10 @@ class ActiveHappyHourTableW extends StatelessWidget {
               stream: FirebaseFirestore.instance
                   .collection('happyhours')
                   .where('businessName',
-                      isGreaterThanOrEqualTo: controller
-                          .searchActiveHappyHourController.text
-                          .toString()
-                          .toUpperCase())
+                  isGreaterThanOrEqualTo: controller
+                      .searchActiveHappyHourController.text
+                      .toString()
+                      .toUpperCase())
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -98,17 +100,17 @@ class ActiveHappyHourTableW extends StatelessWidget {
                   return const CircularProgressIndicator();
                 }
                 final List<HappyHourModel> happyHours =
-                    snapshot.data!.docs.map((DocumentSnapshot document) {
+                snapshot.data!.docs.map((DocumentSnapshot document) {
                   return HappyHourModel.fromMap(document);
                 }).toList();
 
                 return Table(
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   border: const TableBorder(
-                      // bottom: BorderSide(color: Colors.black, width: 1),
-                      // borderRadius: BorderRadius.only(topRight: Radius.circular(60),topLeft: Radius.circular(15),),
-                      //   horizontalInside: BorderSide(color: Colors.red, width: 2),
-                      ),
+                    // bottom: BorderSide(color: Colors.black, width: 1),
+                    // borderRadius: BorderRadius.only(topRight: Radius.circular(60),topLeft: Radius.circular(15),),
+                    //   horizontalInside: BorderSide(color: Colors.red, width: 2),
+                  ),
                   columnWidths: const {
                     0: FlexColumnWidth(0.1),
                     1: FlexColumnWidth(0.2),
@@ -157,66 +159,66 @@ class ActiveHappyHourTableW extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 5, vertical: 10),
                               child:
-                                  Text(city, style: TextStyles.smallBlackText),
+                              Text(city, style: TextStyles.smallBlackText),
                             ),
                           ),
                           userId.isNotEmpty
                               ? TableCell(
-                                  child: StreamBuilder<DocumentSnapshot>(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('users')
-                                          .doc(userId)
-                                          .snapshots(),
-                                      builder: (context,
-                                          AsyncSnapshot<DocumentSnapshot>
-                                              snapshot) {
-                                        if (snapshot.hasData &&
-                                            snapshot.data != null) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 10),
-                                            child: Text(
-                                                snapshot.data!['username'] ??
-                                                    '',
-                                                style:
-                                                    TextStyles.smallBlackText),
-                                          );
-                                        } else {
-                                          return SizedBox
-                                              .shrink(); // or any other widget you want to show when there's no data
-                                        }
-                                      }),
-                                )
+                            child: StreamBuilder<DocumentSnapshot>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userId)
+                                    .snapshots(),
+                                builder: (context,
+                                    AsyncSnapshot<DocumentSnapshot>
+                                    snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 10),
+                                      child: Text(
+                                          snapshot.data!['username'] ??
+                                              '',
+                                          style:
+                                          TextStyles.smallBlackText),
+                                    );
+                                  } else {
+                                    return SizedBox
+                                        .shrink(); // or any other widget you want to show when there's no data
+                                  }
+                                }),
+                          )
                               : Text('Name not found',
-                                  style: TextStyles.smallBlackText),
+                              style: TextStyles.smallBlackText),
                           userId.isNotEmpty
                               ? TableCell(
-                                  child: StreamBuilder<DocumentSnapshot>(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('users')
-                                          .doc(userId)
-                                          .snapshots(),
-                                      builder: (context,
-                                          AsyncSnapshot<DocumentSnapshot>
-                                              snapshot) {
-                                        if (snapshot.hasData &&
-                                            snapshot.data != null) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 10),
-                                            child: Text(
-                                                snapshot.data!['email'] ?? '',
-                                                style:
-                                                    TextStyles.smallBlackText),
-                                          );
-                                        } else {
-                                          return const SizedBox
-                                              .shrink(); // or any other widget you want to show when there's no data
-                                        }
-                                      }),
-                                )
+                            child: StreamBuilder<DocumentSnapshot>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userId)
+                                    .snapshots(),
+                                builder: (context,
+                                    AsyncSnapshot<DocumentSnapshot>
+                                    snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 10),
+                                      child: Text(
+                                          snapshot.data!['email'] ?? '',
+                                          style:
+                                          TextStyles.smallBlackText),
+                                    );
+                                  } else {
+                                    return const SizedBox
+                                        .shrink(); // or any other widget you want to show when there's no data
+                                  }
+                                }),
+                          )
                               : Text('No email ',
-                                  style: TextStyles.smallBlackText),
+                              style: TextStyles.smallBlackText),
                           TableCell(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -240,7 +242,7 @@ class ActiveHappyHourTableW extends StatelessWidget {
                                   showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return activeHappyHourDetailDialogueW(
+                                      return requestHappyHourDetailDialogueW(
                                           docId, happyHourRef);
                                     },
                                   );
@@ -255,8 +257,8 @@ class ActiveHappyHourTableW extends StatelessWidget {
                         .toString()
                         .toLowerCase()
                         .startsWith(controller.searchActiveHour
-                            .toString()
-                            .toLowerCase())) {
+                        .toString()
+                        .toLowerCase())) {
                       return TableRow(
                         decoration: const BoxDecoration(color: Colors.white),
                         children: [
@@ -288,66 +290,66 @@ class ActiveHappyHourTableW extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 5, vertical: 10),
                               child:
-                                  Text(city, style: TextStyles.smallBlackText),
+                              Text(city, style: TextStyles.smallBlackText),
                             ),
                           ),
                           userId.isNotEmpty
                               ? TableCell(
-                                  child: StreamBuilder<DocumentSnapshot>(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('users')
-                                          .doc(userId)
-                                          .snapshots(),
-                                      builder: (context,
-                                          AsyncSnapshot<DocumentSnapshot>
-                                              snapshot) {
-                                        if (snapshot.hasData &&
-                                            snapshot.data != null) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 10),
-                                            child: Text(
-                                                snapshot.data!['username'] ??
-                                                    '',
-                                                style:
-                                                    TextStyles.smallBlackText),
-                                          );
-                                        } else {
-                                          return SizedBox
-                                              .shrink(); // or any other widget you want to show when there's no data
-                                        }
-                                      }),
-                                )
+                            child: StreamBuilder<DocumentSnapshot>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userId)
+                                    .snapshots(),
+                                builder: (context,
+                                    AsyncSnapshot<DocumentSnapshot>
+                                    snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 10),
+                                      child: Text(
+                                          snapshot.data!['username'] ??
+                                              '',
+                                          style:
+                                          TextStyles.smallBlackText),
+                                    );
+                                  } else {
+                                    return SizedBox
+                                        .shrink(); // or any other widget you want to show when there's no data
+                                  }
+                                }),
+                          )
                               : Text('Name not found',
-                                  style: TextStyles.smallBlackText),
+                              style: TextStyles.smallBlackText),
                           userId.isNotEmpty
                               ? TableCell(
-                                  child: StreamBuilder<DocumentSnapshot>(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('users')
-                                          .doc(userId)
-                                          .snapshots(),
-                                      builder: (context,
-                                          AsyncSnapshot<DocumentSnapshot>
-                                              snapshot) {
-                                        if (snapshot.hasData &&
-                                            snapshot.data != null) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5, vertical: 10),
-                                            child: Text(
-                                                snapshot.data!['email'] ?? '',
-                                                style:
-                                                    TextStyles.smallBlackText),
-                                          );
-                                        } else {
-                                          return const SizedBox
-                                              .shrink(); // or any other widget you want to show when there's no data
-                                        }
-                                      }),
-                                )
+                            child: StreamBuilder<DocumentSnapshot>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userId)
+                                    .snapshots(),
+                                builder: (context,
+                                    AsyncSnapshot<DocumentSnapshot>
+                                    snapshot) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 10),
+                                      child: Text(
+                                          snapshot.data!['email'] ?? '',
+                                          style:
+                                          TextStyles.smallBlackText),
+                                    );
+                                  } else {
+                                    return const SizedBox
+                                        .shrink(); // or any other widget you want to show when there's no data
+                                  }
+                                }),
+                          )
                               : Text('No email ',
-                                  style: TextStyles.smallBlackText),
+                              style: TextStyles.smallBlackText),
                           TableCell(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -371,7 +373,7 @@ class ActiveHappyHourTableW extends StatelessWidget {
                                   showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return activeHappyHourDetailDialogueW(
+                                      return requestHappyHourDetailDialogueW(
                                           docId, happyHourRef);
                                     },
                                   );

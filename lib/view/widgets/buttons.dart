@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../core/utils/colors.dart';
-import '../../core/utils/styles.dart';
 
 
 
+
+import '../../core/utils/export.dart';
 
 class ElevatedButtonW extends StatelessWidget {
   final Color? buttonColor;

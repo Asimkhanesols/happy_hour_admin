@@ -1,11 +1,4 @@
-import 'package:add_happy_hour_admin/core/utils/theme_data.dart';
-import 'package:add_happy_hour_admin/view/screen/auth_screen/login_screen.dart';
-import 'package:add_happy_hour_admin/view/screen/dashboard/dashboard_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-
+import 'core/utils/export.dart';
 import 'firebase_options.dart';
 
 
@@ -13,7 +6,7 @@ Future <void> main() async{
 
 WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.web,
+  options: DefaultFirebaseOptions.currentPlatform,
 );
 
 
